@@ -32,17 +32,17 @@
             <td class="px-6 py-4 whitespace-nowrap">{{ account.balance }}</td>
             <td class="px-6 py-4 whitespace-nowrap">{{ account.createBy }}</td>
             <td class="px-6 py-4 whitespace-nowrap">{{ account.createOn }}</td>
-            <td class="px-6 py-4 whitespace-nowrap"><button class="bg-blue-500 text-white font-bold py-2 px-4 mr-2 rounded">edit</button><button class="bg-red-500 text-white font-bold py-2 px-4 mr-2 rounded">delete</button> <button class="bg-green-500 text-white font-bold py-2 px-4 rounded">save</button> </td>
+            <td class="px-6 py-4 whitespace-nowrap"><button class="bg-blue-500 text-white font-bold py-2 px-4 mr-2 rounded" (click)="deposite(account.id!)">Deposite</button><button class="bg-red-500 text-white font-bold py-2 px-4 mr-2 rounded">delete</button> <button class="bg-green-500 text-white font-bold py-2 px-4 rounded">save</button> </td>
           </tr>
         </tbody>
       </table>
     </div>
   
-    <!-- Pagination Controls -->
+    
     <div class="flex justify-between items-center py-4">
       <div class="text-sm text-gray-500">
         Showing {{ (currentPage - 1) * itemsPerPage + 1 }} to
-        {{ Math.min(currentPage * itemsPerPage, filteredUsers.length) }} of {{ filteredUsers.length }} results
+        <!-- {{ Math.min(currentPage * itemsPerPage, totalResults) }} of {{ totalResults }} results -->
       </div>
       <div class="flex items-center space-x-2">
         <button

@@ -5,7 +5,7 @@ import { AccountListComponent } from './component/account-list/account-list.comp
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,AccountListComponent],
+  imports: [RouterOutlet, AccountListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

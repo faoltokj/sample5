@@ -1,27 +1,25 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { AccountListComponent } from "../account-list/account-list.component";
 import { CreateAccountComponent } from "../create-account/create-account.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [AccountListComponent, CreateAccountComponent],
+  imports: [AccountListComponent, CreateAccountComponent,CommonModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
 
-  constructor(private el: ElementRef, private renderer: Renderer2){}
+  constructor(){}
 
-  setActive = (id: string) => {
-    const navLink = this.el.nativeElement.querySelectorAll('.navItems a');
-    navLink.forEach((e: HTMLElement) => {
-      this.renderer.removeClass(e, 'active');
-    });
-    const activeLink = this.el.nativeElement.querySelector(
-      `.navItems a[href='#${id}']`
-    );
-    this.renderer.addClass(activeLink, 'active');
-  };
+  activeSection: string = 'account'; // Default section to show
+
+  setActive(section: string) {
+    this.activeSection = section;
+  }
+
+  
 
 }

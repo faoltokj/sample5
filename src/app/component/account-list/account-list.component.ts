@@ -2,56 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../service/account.service';
 import { Account } from '../../account';
 import { CommonModule } from '@angular/common';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'account-list',
   standalone: true,
-  imports: [CommonModule, NgxPaginationModule],
+  imports: [CommonModule],
   templateUrl: './account-list.component.html',
   styleUrl: './account-list.component.scss'
 })
-export class AccountListComponent implements OnInit{
-
+export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
+  filteredUsers: any[] = [];
+  paginatedUsers: any[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalPages: number = 1;
+  searchTerm: string = '';
 
+  totalResults: number = 0;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private route: Router) { }
 
   ngOnInit(): void {
     this.getAccounts();
-    this.updatePagination();
   }
 
   getAccounts(): void {
     this.accountService.getAllAccounts().subscribe(data => {
       this.accounts = data;
-      console.log("Accounts: ", this.accounts);  
+      this.filteredUsers = [...this.accounts]; 
+      this.updatePagination();
     });
   }
 
-
-  users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-    { id: 3, name: 'Alice Brown', email: 'alice@example.com' },
-    { id: 4, name: 'Bob White', email: 'bob@example.com' },
-    { id: 5, name: 'Chris Blue', email: 'chris@example.com' },
-    { id: 6, name: 'David Green', email: 'david@example.com' },
-    { id: 7, name: 'Eve Black', email: 'eve@example.com' },
-    { id: 8, name: 'Frank Red', email: 'frank@example.com' },
-    { id: 9, name: 'Grace Pink', email: 'grace@example.com' },
-    { id: 10, name: 'Hank Yellow', email: 'hank@example.com' },
-  ];
-
-  filteredUsers = [...this.users]; // Copy of users for filtering
-  paginatedUsers: any[] = []; // Subset of users for pagination
-  currentPage: number = 1;
-  itemsPerPage: number = 5;
-  totalPages: number = 1;
-  searchTerm: string = '';
-  Math = Math; // Expose Math object to the template
-
+  deposite(id: number){
+    this.route.navigate([`/deposite-amount`,id]);
+  }
 
   updatePagination() {
     this.totalPages = Math.ceil(this.filteredUsers.length / this.itemsPerPage);
@@ -81,14 +68,11 @@ export class AccountListComponent implements OnInit{
   }
 
   filterUsers() {
-    this.filteredUsers = this.users.filter(user =>
-      user.name.toLowerCase().includes(this.searchTerm) ||
-      user.email.toLowerCase().includes(this.searchTerm)
+    this.filteredUsers = this.accounts.filter(user =>
+      user.accountholdername?.toLowerCase().includes(this.searchTerm) ||
+      user.createBy?.toLowerCase().includes(this.searchTerm)
     );
     this.currentPage = 1; // Reset to first page after filtering
     this.updatePagination();
   }
-
-
-
 }
