@@ -3,11 +3,12 @@ import { AccountService } from '../../service/account.service';
 import { Account } from '../../account';
 import { CommonModule } from '@angular/common';
 import { Route, Router } from '@angular/router';
+import { HeaderComponent } from "../common/header/header.component";
 
 @Component({
   selector: 'account-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './account-list.component.html',
   styleUrl: './account-list.component.scss'
 })
@@ -38,6 +39,10 @@ export class AccountListComponent implements OnInit {
 
   deposite(id: number){
     this.route.navigate([`/deposite-amount`,id]);
+  }
+  
+  withdraw(id: number){
+    this.route.navigate([`/withdraw`,id]);
   }
 
   updatePagination() {

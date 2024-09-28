@@ -1,3 +1,4 @@
+<app-header></app-header>
 
 <h1 class="text-center text-xl font-semibold">Account All List</h1>
 
@@ -32,7 +33,7 @@
             <td class="px-6 py-4 whitespace-nowrap">{{ account.balance }}</td>
             <td class="px-6 py-4 whitespace-nowrap">{{ account.createBy }}</td>
             <td class="px-6 py-4 whitespace-nowrap">{{ account.createOn }}</td>
-            <td class="px-6 py-4 whitespace-nowrap"><button class="bg-blue-500 text-white font-bold py-2 px-4 mr-2 rounded" (click)="deposite(account.id!)">Deposite</button><button class="bg-red-500 text-white font-bold py-2 px-4 mr-2 rounded">delete</button> <button class="bg-green-500 text-white font-bold py-2 px-4 rounded">save</button> </td>
+            <td class="px-6 py-4 whitespace-nowrap"><button class="bg-blue-500 text-white font-bold py-2 px-4 mr-2 rounded" (click)="deposite(account.id!)">Deposite</button><button class="bg-red-500 text-white font-bold py-2 px-4 mr-2 rounded" (click)="withdraw(account.id!)">Withdraw</button> <button class="bg-green-500 text-white font-bold py-2 px-4 rounded">save</button> </td>
           </tr>
         </tbody>
       </table>

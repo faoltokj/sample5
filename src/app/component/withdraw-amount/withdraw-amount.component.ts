@@ -1,18 +1,18 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Account } from '../../account';
 import { AccountService } from '../../service/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Account } from '../../account';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-deposit-amount',
+  selector: 'app-withdraw-amount',
   standalone: true,
   imports: [FormsModule, CommonModule],
-  templateUrl: './deposit-amount.component.html',
-  styleUrl: './deposit-amount.component.scss',
+  templateUrl: './withdraw-amount.component.html',
+  styleUrl: './withdraw-amount.component.scss'
 })
-export class DepositAmountComponent {
+export class WithdrawAmountComponent {
   accounts: Account = new Account();
   id!: number;
   deposite = false;
@@ -34,7 +34,7 @@ export class DepositAmountComponent {
   onSubmit(form: any) {
     if(this.inValidAmount(this.accounts.balance!)){
     this.service
-      .depositeAmount(this.id!, this.accounts.balance!)
+      .withdrawAmount(this.id!, this.accounts.balance!)
       .subscribe((data) => {
         this.accounts = data;
         this.deposite = true;
