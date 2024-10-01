@@ -6,6 +6,7 @@ import { CreateAccountComponent } from './component/create-account/create-accoun
 import { DepositAmountComponent } from './component/deposit-amount/deposit-amount.component';
 import { NgModule } from '@angular/core';
 import { WithdrawAmountComponent } from './component/withdraw-amount/withdraw-amount.component';
+import { ViewAccountDetailsComponent } from './component/view-account-details/view-account-details.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },  
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'account', component: AccountListComponent },
   { path: 'create-account', component: CreateAccountComponent },
   { path: 'deposite-amount/:id', component: DepositAmountComponent },
-  { path: 'withdraw/:id', component: WithdrawAmountComponent }
+  { path: 'withdraw/:id', component: WithdrawAmountComponent },
+  { path: 'view/:id', component: ViewAccountDetailsComponent }
 ]
 

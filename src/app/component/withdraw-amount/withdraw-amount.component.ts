@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class WithdrawAmountComponent {
   accounts: Account = new Account();
   id!: number;
-  deposite = false;
+  withdraw = false;
   notValidAmount = false;
 
   constructor(
@@ -37,11 +37,11 @@ export class WithdrawAmountComponent {
       .withdrawAmount(this.id!, this.accounts.balance!)
       .subscribe((data) => {
         this.accounts = data;
-        this.deposite = true;
+        this.withdraw = true;
         // setTimeout(() => {
         //   this.route.navigate([`/home`]);
         // }, 3000);
-        console.log("Deposite amount", this.accounts = data );
+        console.log("withdraw amount", this.accounts = data );
         
       });
     }else{

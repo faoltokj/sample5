@@ -13,8 +13,8 @@
               <span class="font-bold">{{accounts.balance}}</span>
             </p>
           </div>
-        <div *ngIf="deposite" class="bg-gray-200 p-4">
-            <p class="text-green-800 text-center"> &#8377; {{accounts.balance}} Amount Deposite successfully!</p>
+        <div *ngIf="withdraw" class="bg-gray-200 p-4">
+            <p class="text-green-800 text-center"> &#8377; Amount Withdraw successfully!</p>
         </div>
         <div *ngIf="notValidAmount" class="bg-red-500 p-4">
             <p class="text-white text-center"> &#8377; <span class="font-bold">{{accounts.balance}}</span> Invalid Amount!.. Enter valid amount..</p>

@@ -46,4 +46,9 @@ export class AccountService {
       reqRemoAmount
     );
   }
+
+  deleteAccount(id : number) : Observable<Account>{
+    return this.httpClient.delete<Account>(`${this.baseUrl}delete/${id}` );
+  }
+
 }
